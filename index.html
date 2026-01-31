@@ -22,6 +22,7 @@ body {
   overflow-x:hidden;
 }
 
+/* Base */
 section {
   padding:90px 20px;
   max-width:1000px;
@@ -29,20 +30,39 @@ section {
   text-align:center;
 }
 
+/* Typography */
 h1,h2 {
   font-family:'Cormorant Garamond',serif;
 }
 
+/* HERO */
 .hero {
   min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   position:relative;
-  overflow:hidden;
 }
 
 .hero span { color:var(--wine); }
+
+.hero h1,
+.hero h2,
+.hero p,
+.hero .ring {
+  opacity:0;
+  transform:translateY(20px);
+  animation:heroReveal 1.2s ease forwards;
+}
+
+.hero h1 { animation-delay:.2s; }
+.hero h2 { animation-delay:.4s; }
+.hero .ring { animation-delay:.6s; }
+.hero p { animation-delay:.8s; }
+
+@keyframes heroReveal {
+  to { opacity:1; transform:translateY(0); }
+}
 
 .ring {
   font-size:80px;
@@ -50,7 +70,7 @@ h1,h2 {
 }
 
 @keyframes pulse {
-  50% { transform:scale(1.15); }
+  50% { transform:scale(1.12); }
 }
 
 /* MUSIC BUTTON */
@@ -65,33 +85,6 @@ h1,h2 {
   cursor:pointer;
 }
 
-/* TOP STRIP */
-.strip {
-  position:absolute;
-  top:10%;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:20px;
-}
-
-.strip img {
-  height:150px;
-  border-radius:16px;
-  box-shadow:0 15px 30px rgba(0,0,0,.25);
-  animation:floaty 6s ease-in-out infinite;
-}
-
-@media (max-width:600px) {
-  .strip img { height:180px; }
-}
-
-@keyframes floaty {
-  0% { transform:translateY(0); }
-  50% { transform:translateY(-12px); }
-  100% { transform:translateY(0); }
-}
-
 /* COUNTDOWN */
 .countdown {
   display:flex;
@@ -100,18 +93,23 @@ h1,h2 {
   margin-top:35px;
 }
 
-.time-box {
-  background:rgba(255,255,255,.6);
-  padding:15px;
-  border-radius:18px;
-  min-width:70px;
-}
-
 /* TYPEWRITER */
 .typewriter {
   max-width:650px;
   margin:45px auto 0;
   line-height:1.8;
+}
+
+/* REVEAL ANIMATION */
+.reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+.reveal.show {
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* POLAROIDS */
@@ -128,10 +126,12 @@ h1,h2 {
   padding:10px;
   border-radius:10px;
   box-shadow:0 20px 35px rgba(0,0,0,.2);
-  animation:floaty 7s ease-in-out infinite;
 }
 
-.polaroid img { width:100%; border-radius:8px; }
+.polaroid img {
+  width:100%;
+  border-radius:8px;
+}
 
 /* TIMELINE */
 .timeline img {
@@ -140,7 +140,6 @@ h1,h2 {
   margin:35px 0;
   border-radius:22px;
   box-shadow:0 25px 50px rgba(0,0,0,.25);
-  animation:floaty 8s ease-in-out infinite;
 }
 
 /* WALL */
@@ -153,7 +152,6 @@ h1,h2 {
   width:100%;
   margin-bottom:15px;
   border-radius:18px;
-  animation:floaty 9s ease-in-out infinite;
 }
 
 /* FINAL */
@@ -163,7 +161,6 @@ h1,h2 {
   margin:15px;
   border-radius:22px;
   box-shadow:0 25px 50px rgba(0,0,0,.25);
-  animation:floaty 10s ease-in-out infinite;
 }
 
 /* HEARTS */
@@ -192,19 +189,13 @@ footer {
 
 <body>
 
-<!-- 🎵 MUSIC -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="Thuli-Thuli-Mazhaiyaai.mp3" type="audio/mpeg">
 </audio>
 
 <section class="hero">
   <button class="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
-
-  <div class="strip">
-    <img src="p1.jpg">
-    <img src="p2.jpg">
-    <img src="p3.jpg">
-  </div>
 
   <h1>💖 <span>Surya</span> & <span>Nidhisha</span></h1>
   <h2>are getting engaged</h2>
@@ -221,7 +212,7 @@ footer {
   <div class="typewriter" id="text"></div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Memories that floated into love ✨</h2>
   <div class="polaroids">
     <div class="polaroid"><img src="p4.jpg"></div>
@@ -233,7 +224,7 @@ footer {
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>The journey 💞</h2>
   <div class="timeline">
     <img src="p10.jpg">
@@ -244,7 +235,7 @@ footer {
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>Little moments, big love 🤍</h2>
   <div class="wall">
     <img src="p16.jpg">
@@ -255,14 +246,13 @@ footer {
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h2>And now… Forever ♾️</h2>
   <div class="final">
     <img src="p23.jpg">
     <img src="p24.jpg">
     <img src="p25.jpg">
     <img src="p26.jpg">
-    <img src="p27.jpg">
     <img src="p28.jpg">
     <img src="p29.jpg">
     <img src="p30.jpg">
@@ -321,6 +311,17 @@ let i = 0;
   }
 })();
 
+/* SCROLL REVEAL */
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+  reveals.forEach(r => {
+    const top = r.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      r.classList.add("show");
+    }
+  });
+});
+
 /* HEARTS */
 setInterval(() => {
   const h = document.createElement("div");
@@ -329,7 +330,7 @@ setInterval(() => {
   h.style.left = Math.random() * 100 + "vw";
   document.body.appendChild(h);
   setTimeout(() => h.remove(), 9000);
-}, 1200);
+}, 1400);
 </script>
 
 </body>
