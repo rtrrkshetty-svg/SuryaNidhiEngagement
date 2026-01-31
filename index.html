@@ -1,170 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💍 Engagement Surprise</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💍 A Love Story Begins</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+:root {
+  --wine:#5a0f2e;
+  --rose:#fde2e4;
+}
 
-    body {
-      background: linear-gradient(135deg, #fdeff9, #ec38bc, #7303c0);
-      min-height: 100vh;
-      color: #fff;
-      text-align: center;
-      overflow-x: hidden;
-    }
+body {
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(180deg,#fff5f7,var(--rose));
+  color:#3a2c2c;
+}
 
-    .container {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+section {
+  padding:90px 20px;
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
+}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
+h1,h2 {
+  font-family:'Cormorant Garamond',serif;
+}
 
-    h2 {
-      font-weight: 300;
-      margin-bottom: 30px;
-    }
+.hero {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
 
-    .ring {
-      font-size: 70px;
-      animation: pulse 2s infinite;
-      margin: 20px 0;
-    }
+.hero span { color:var(--wine); }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
+.ring { font-size:80px; animation:pulse 2.5s infinite; }
+@keyframes pulse { 50%{transform:scale(1.15);} }
 
-    .date {
-      background: rgba(255,255,255,0.15);
-      padding: 15px 25px;
-      border-radius: 30px;
-      display: inline-block;
-      margin-bottom: 40px;
-      font-size: 1.1rem;
-    }
+/* Floating strip */
+.strip {
+  display:flex;
+  gap:15px;
+  overflow:hidden;
+  position:absolute;
+  top:10%;
+  width:100%;
+}
+.strip img {
+  width:120px;
+  border-radius:16px;
+  animation:scroll 25s linear infinite;
+}
+@keyframes scroll {
+  from { transform:translateX(0); }
+  to { transform:translateX(-100%); }
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
-      margin: 40px 0;
-    }
+/* Countdown */
+.countdown {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:35px;
+}
+.time-box {
+  background:rgba(255,255,255,.6);
+  padding:15px;
+  border-radius:18px;
+  min-width:70px;
+}
 
-    .gallery img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 15px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
+/* Typewriter */
+.typewriter {
+  max-width:650px;
+  margin:45px auto 0;
+  line-height:1.8;
+}
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
+/* POLAROIDS */
+.polaroids {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+.polaroid {
+  width:160px;
+  background:#fff;
+  padding:10px;
+  border-radius:10px;
+  box-shadow:0 20px 35px rgba(0,0,0,.2);
+  transform:rotate(calc(-6deg + 12deg * var(--r)));
+}
+.polaroid img { width:100%; border-radius:8px; }
 
-    .message {
-      background: rgba(255,255,255,0.15);
-      padding: 30px;
-      border-radius: 20px;
-      margin-top: 40px;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
+/* TIMELINE */
+.timeline img {
+  width:85%;
+  max-width:380px;
+  margin:35px 0;
+  border-radius:22px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
 
-    footer {
-      margin-top: 50px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
+/* MEMORY WALL */
+.wall {
+  columns:2 140px;
+  column-gap:15px;
+}
+.wall img {
+  width:100%;
+  margin-bottom:15px;
+  border-radius:18px;
+}
 
-    button {
-      margin-top: 25px;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 30px;
-      background: #fff;
-      color: #7303c0;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+/* GAME */
+.game {
+  background:rgba(255,255,255,.65);
+  padding:45px;
+  border-radius:30px;
+}
+.options button {
+  padding:12px 26px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  background:var(--wine);
+  color:#fff;
+  cursor:pointer;
+}
 
-    button:hover {
-      background: #ffd6f6;
-      transform: scale(1.05);
-    }
-  </style>
+/* FINAL */
+.final img {
+  width:75%;
+  max-width:320px;
+  margin:20px;
+  border-radius:22px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+footer {
+  padding:60px 20px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Optional Background Music -->
-  <!-- <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio> -->
-
-  <div class="container">
-
-    <!-- NAMES -->
-    <h1>💖 <span id="name1">Surya</span> & <span id="name2">Nidhisha</span> 💖</h1>
-    <h2>Are Getting Engaged!</h2>
-
-    <div class="ring">💍</div>
-
-    <!-- DATE -->
-    <div class="date">
-      📅 Engagement Date: <strong>1st March 2026</strong>
-    </div>
-
-    <!-- PHOTOS -->
-    <div class="gallery">
-      <img src="p1.jpg" alt="Memory 1">
-      <img src="p2.jpg" alt="Memory 2">
-      <img src="p3.jpg" alt="Memory 3">
-    </div>
-
-    <!-- MESSAGE -->
-    <div class="message">
-      💌 <br><br>
-      This is a small surprise to celebrate your beautiful journey together.  
-      May your lives be filled with love, laughter, trust, and endless happiness.  
-      <br><br>
-      Here’s to forever, hand in hand. ✨
-    </div>
-
-    <button onclick="showSurprise()">Tap for a Surprise 💖</button>
-
-    <footer>
-      Made with ❤️ by a friend who loves you both
-    </footer>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="strip">
+    <img src="p2.jpg"><img src="p3.jpg"><img src="p4.jpg">
+    <img src="p5.jpg"><img src="p6.jpg"><img src="p7.jpg">
   </div>
 
-  <script>
-    function showSurprise() {
-      alert("💖 Wishing you a lifetime of love, happiness & togetherness! 💖");
-    }
-  </script>
+  <h1>💖 <span>Surya</span> & <span>Nidhisha</span></h1>
+  <h2>are getting engaged</h2>
+  <div class="ring">💍</div>
+  <p>1st March 2026</p>
+
+  <div class="countdown">
+    <div class="time-box"><h3 id="days">0</h3>Days</div>
+    <div class="time-box"><h3 id="hours">0</h3>Hrs</div>
+    <div class="time-box"><h3 id="mins">0</h3>Min</div>
+    <div class="time-box"><h3 id="secs">0</h3>Sec</div>
+  </div>
+
+  <div class="typewriter" id="text"></div>
+</section>
+
+<!-- POLAROIDS -->
+<section>
+  <h2>Memories that floated into love ✨</h2>
+  <div class="polaroids">
+    <div class="polaroid" style="--r:.1"><img src="p8.jpg"></div>
+    <div class="polaroid" style="--r:.7"><img src="p9.jpg"></div>
+    <div class="polaroid" style="--r:.3"><img src="p10.jpg"></div>
+    <div class="polaroid" style="--r:.9"><img src="p11.jpg"></div>
+    <div class="polaroid" style="--r:.2"><img src="p12.jpg"></div>
+    <div class="polaroid" style="--r:.6"><img src="p13.jpg"></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <h2>The journey 💞</h2>
+  <div class="timeline">
+    <img src="p14.jpg"><img src="p15.jpg"><img src="p16.jpg"><img src="p17.jpg">
+  </div>
+</section>
+
+<!-- GAME -->
+<section>
+  <h2>Little Love Game 💕</h2>
+  <div class="game">
+    <p id="q"></p>
+    <div class="options" id="opts"></div>
+    <p id="result"></p>
+  </div>
+</section>
+
+<!-- WALL -->
+<section>
+  <h2>Little moments, big love 🤍</h2>
+  <div class="wall">
+    <img src="p18.jpg"><img src="p19.jpg"><img src="p20.jpg">
+    <img src="p21.jpg"><img src="p22.jpg"><img src="p23.jpg">
+  </div>
+</section>
+
+<!-- FINALE -->
+<section>
+  <h2>And now… Forever ♾️</h2>
+  <div class="final">
+    <img src="p25.jpg"><img src="p26.jpg"><img src="p27.jpg">
+    <img src="p28.jpg"><img src="p29.jpg"><img src="p30.jpg">
+  </div>
+</section>
+
+<footer>
+  Made with love, by yours, <strong>Shetty</strong> 💞
+</footer>
+
+<script>
+// Countdown
+const target=new Date("March 1, 2026").getTime();
+setInterval(()=>{
+  const d=target-Date.now();
+  days.innerText=Math.floor(d/86400000);
+  hours.innerText=Math.floor(d/3600000)%24;
+  mins.innerText=Math.floor(d/60000)%60;
+  secs.innerText=Math.floor(d/1000)%60;
+},1000);
+
+// Typewriter
+const msg=`Some love stories are quiet.
+Some are magical.
+Theirs is both —
+and this is only the beginning. 💖`;
+let i=0;
+(function type(){
+  if(i<msg.length){ text.innerHTML+=msg[i++]; setTimeout(type,40); }
+})();
+
+// Game
+const quiz=[
+  ["Who fell in love first?",["Surya","Nidhisha","Both","Destiny"]],
+  ["Who says sorry first?",["Surya","Nidhisha","Depends","Both"]],
+  ["Who plans dates?",["Surya","Nidhisha","Both","Google"]],
+  ["What keeps them together?",["Love","Trust","Friendship","All ❤️"]]
+];
+let qi=0;
+function loadQ(){
+  if(qi>=quiz.length){ q.innerText="They win at love. Always 💖"; opts.innerHTML=""; return;}
+  q.innerText=quiz[qi][0];
+  opts.innerHTML="";
+  quiz[qi][1].forEach(o=>{
+    const b=document.createElement("button");
+    b.innerText=o;
+    b.onclick=()=>{qi++;loadQ();};
+    opts.appendChild(b);
+  });
+}
+loadQ();
+</script>
 
 </body>
 </html>
