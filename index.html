@@ -1,321 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💍 A Love Story Begins</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💍 A Love Story Begins</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --wine:#5a0f2e;
-  --rose:#fde2e4;
-}
+  <style>
+    :root {
+      --wine: #5a0f2e;
+      --rose: #fde2e4;
+    }
 
-body {
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:
-  radial-gradient(circle at top, #fff0f3 0%, transparent 60%),
-  linear-gradient(180deg, #fff5f7 0%, #f8c1cc 50%, #f3a6b1 100%);
-}
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top, #fff0f3 0%, transparent 60%),
+        linear-gradient(180deg, #fff5f7 0%, #f8c1cc 50%, #f3a6b1 100%);
+      overflow-x: hidden;
+      color: #3a2c2c;
+    }
 
-section {
-  padding:90px 20px;
-  max-width:1000px;
-  margin:auto;
-  text-align:center;
-}
+    section {
+      padding: 90px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
 
-h1,h2 {
-  font-family:'Cormorant Garamond',serif;
-}
+    h1, h2 {
+      font-family: "Cormorant Garamond", serif;
+    }
 
-.hero {
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-.hero span { color:var(--wine); }
+    .hero span { color: var(--wine); }
 
-.ring { font-size:80px; animation:pulse 2.5s infinite; }
-@keyframes pulse { 50%{transform:scale(1.15);} }
+    .ring {
+      font-size: 80px;
+      animation: pulse 2.5s infinite;
+    }
 
-/* ===== TOP PHOTO STRIP (FIXED HEIGHT) ===== */
-.strip {
-  position:absolute;
-  top:8%;
-  width:100%;
-  display:flex;
-  gap:18px;
-  animation:scroll 35s linear infinite;
-}
+    @keyframes pulse {
+      50% { transform: scale(1.15); }
+    }
 
-.strip img {
-  height:80px;              /* 🔴 FIX: reduced height */
-  width:auto;
-  border-radius:14px;
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
-  animation:floaty 6s ease-in-out infinite;
-}
+    /* TOP PHOTO STRIP */
+    .strip {
+      position: absolute;
+      top: 8%;
+      width: 100%;
+      display: flex;
+      gap: 18px;
+      animation: scroll 35s linear infinite;
+    }
 
-@keyframes scroll {
-  from { transform:translateX(0); }
-  to { transform:translateX(-50%); }
-}
+    .strip img {
+      height: 80px;
+      width: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      animation: floaty 6s ease-in-out infinite;
+    }
 
-/* ===== FLOATING ===== */
-@keyframes floaty {
-  0% { transform:translateY(0); }
-  50% { transform:translateY(-12px); }
-  100% { transform:translateY(0); }
-}
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
 
-/* Countdown */
-.countdown {
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:35px;
-}
-.time-box {
-  background:rgba(255,255,255,.6);
-  padding:15px;
-  border-radius:18px;
-  min-width:70px;
-}
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0); }
+    }
 
-/* Typewriter */
-.typewriter {
-  max-width:650px;
-  margin:45px auto 0;
-  line-height:1.8;
-}
+    /* COUNTDOWN */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 35px;
+    }
 
-/* POLAROIDS */
-.polaroids {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:25px;
-}
-.polaroid {
-  width:160px;
-  background:#fff;
-  padding:10px;
-  border-radius:10px;
-  box-shadow:0 20px 35px rgba(0,0,0,.2);
-  transform:rotate(calc(-6deg + 12deg * var(--r)));
-  animation:floaty 7s ease-in-out infinite;
-}
-.polaroid img { width:100%; border-radius:8px; }
+    .time-box {
+      background: rgba(255,255,255,.6);
+      padding: 15px;
+      border-radius: 18px;
+      min-width: 70px;
+    }
 
-/* TIMELINE */
-.timeline img {
-  width:85%;
-  max-width:380px;
-  margin:35px 0;
-  border-radius:22px;
-  box-shadow:0 25px 50px rgba(0,0,0,.25);
-  animation:floaty 8s ease-in-out infinite;
-}
+    /* TYPEWRITER */
+    .typewriter {
+      max-width: 650px;
+      margin: 45px auto 0;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
 
-/* MEMORY WALL */
-.wall {
-  columns:2 140px;
-  column-gap:15px;
-}
-.wall img {
-  width:100%;
-  margin-bottom:15px;
-  border-radius:18px;
-  animation:floaty 9s ease-in-out infinite;
-}
+    /* POLAROIDS */
+    .polaroids {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
 
-/* GAME */
-.game {
-  background:rgba(255,255,255,.65);
-  padding:45px;
-  border-radius:30px;
-}
-.options button {
-  padding:12px 26px;
-  margin:10px;
-  border:none;
-  border-radius:30px;
-  background:var(--wine);
-  color:#fff;
-  cursor:pointer;
-}
+    .polaroid {
+      width: 160px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 20px 35px rgba(0,0,0,.2);
+      transform: rotate(calc(-6deg + 12deg * var(--r)));
+      animation: floaty 7s ease-in-out infinite;
+    }
 
-/* FINAL */
-.final img {
-  width:75%;
-  max-width:320px;
-  margin:20px;
-  border-radius:22px;
-  box-shadow:0 25px 50px rgba(0,0,0,.25);
-  animation:floaty 10s ease-in-out infinite;
-}
+    .polaroid img { width: 100%; border-radius: 8px; }
 
-/* HEARTS */
-.heart {
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  color:#c9184a;
-  animation:heartFloat 9s linear infinite;
-  opacity:0.8;
-}
+    /* TIMELINE */
+    .timeline img {
+      width: 85%;
+      max-width: 380px;
+      margin: 35px 0;
+      border-radius: 22px;
+      box-shadow: 0 25px 50px rgba(0,0,0,.25);
+      animation: floaty 8s ease-in-out infinite;
+    }
 
-@keyframes heartFloat {
-  to {
-    transform:translateY(-120vh);
-    opacity:0;
-  }
-}
+    /* WALL */
+    .wall {
+      columns: 2 140px;
+      column-gap: 15px;
+    }
 
-footer {
-  padding:60px 20px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.1rem;
-}
-</style>
+    .wall img {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 18px;
+      animation: floaty 9s ease-in-out infinite;
+    }
+
+    /* GAME */
+    .game {
+      background: rgba(255,255,255,.65);
+      padding: 45px;
+      border-radius: 30px;
+    }
+
+    .options button {
+      padding: 12px 26px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      background: var(--wine);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* FINAL */
+    .final img {
+      width: 75%;
+      max-width: 320px;
+      margin: 20px;
+      border-radius: 22px;
+      box-shadow: 0 25px 50px rgba(0,0,0,.25);
+      animation: floaty 10s ease-in-out infinite;
+    }
+
+    /* HEARTS */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 18px;
+      color: #c9184a;
+      animation: heartFloat 9s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes heartFloat {
+      to {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+
+    footer {
+      padding: 60px 20px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <div class="strip">
-    <img src="p2.jpg"><img src="p4.jpg">
-    <img src="p5.jpg"><img src="p7.jpg">
-    <img src="p2.jpg"><img src="p4.jpg">
-  </div>
+  <!-- 🎵 BACKGROUND MUSIC -->
+  <audio id="bgMusic" loop>
+    <source src="Thuli-Thuli-Mazhaiyaai.mp3" type="audio/mpeg">
+  </audio>
 
-  <h1>💖 <span>Surya</span> & <span>Nidhisha</span></h1>
-  <h2>are getting engaged</h2>
-  <div class="ring">💍</div>
-  <p>1st March 2026</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="strip">
+      <img src="p2.jpg">
+      <img src="p4.jpg">
+      <img src="p5.jpg">
+    </div>
 
-  <div class="countdown">
-    <div class="time-box"><h3 id="days">0</h3>Days</div>
-    <div class="time-box"><h3 id="hours">0</h3>Hrs</div>
-    <div class="time-box"><h3 id="mins">0</h3>Min</div>
-    <div class="time-box"><h3 id="secs">0</h3>Sec</div>
-  </div>
+    <h1>💖 <span>Surya</span> & <span>Nidhisha</span></h1>
+    <h2>are getting engaged</h2>
+    <div class="ring">💍</div>
+    <p>1st March 2026</p>
 
-  <div class="typewriter" id="text"></div>
-</section>
+    <div class="countdown">
+      <div class="time-box"><h3 id="days">0</h3>Days</div>
+      <div class="time-box"><h3 id="hours">0</h3>Hrs</div>
+      <div class="time-box"><h3 id="mins">0</h3>Min</div>
+      <div class="time-box"><h3 id="secs">0</h3>Sec</div>
+    </div>
 
-<section>
-  <h2>Memories that floated into love ✨</h2>
-  <div class="polaroids">
-    <div class="polaroid" style="--r:.1"><img src="p8.jpg"></div>
-    <div class="polaroid" style="--r:.7"><img src="p9.jpg"></div>
-    <div class="polaroid" style="--r:.3"><img src="p10.jpg"></div>
-    <div class="polaroid" style="--r:.9"><img src="p11.jpg"></div>
-    <div class="polaroid" style="--r:.2"><img src="p12.jpg"></div>
-    <div class="polaroid" style="--r:.6"><img src="p13.jpg"></div>
-  </div>
-</section>
+    <div class="typewriter" id="text"></div>
+  </section>
 
-<section>
-  <h2>The journey 💞</h2>
-  <div class="timeline">
-    <img src="p14.jpg"><img src="p15.jpg"><img src="p16.jpg"><img src="p17.jpg">
-  </div>
-</section>
+  <!-- POLAROIDS -->
+  <section>
+    <h2>Memories that floated into love ✨</h2>
+    <div class="polaroids">
+      <div class="polaroid" style="--r:.1"><img src="p8.jpg"></div>
+      <div class="polaroid" style="--r:.7"><img src="p9.jpg"></div>
+      <div class="polaroid" style="--r:.3"><img src="p10.jpg"></div>
+      <div class="polaroid" style="--r:.9"><img src="p11.jpg"></div>
+      <div class="polaroid" style="--r:.2"><img src="p12.jpg"></div>
+      <div class="polaroid" style="--r:.6"><img src="p13.jpg"></div>
+    </div>
+  </section>
 
-<section>
-  <h2>Little Love Game 💕</h2>
-  <div class="game">
-    <p id="q"></p>
-    <div class="options" id="opts"></div>
-  </div>
-</section>
+  <!-- TIMELINE -->
+  <section>
+    <h2>The journey 💞</h2>
+    <div class="timeline">
+      <img src="p14.jpg">
+      <img src="p15.jpg">
+      <img src="p16.jpg">
+      <img src="p17.jpg">
+    </div>
+  </section>
 
-<section>
-  <h2>Little moments, big love 🤍</h2>
-  <div class="wall">
-    <img src="p18.jpg"><img src="p19.jpg"><img src="p20.jpg">
-    <img src="p21.jpg"><img src="p22.jpg"><img src="p23.jpg">
-  </div>
-</section>
+  <!-- GAME -->
+  <section>
+    <h2>Little Love Game 💕</h2>
+    <div class="game">
+      <p id="q"></p>
+      <div class="options" id="opts"></div>
+    </div>
+  </section>
 
-<section>
-  <h2>And now… Forever ♾️</h2>
-  <div class="final">
-    <img src="p25.jpg"><img src="p26.jpg"><img src="p27.jpg">
-    <img src="p28.jpg"><img src="p29.jpg"><img src="p30.jpg">
-  </div>
-</section>
+  <!-- WALL -->
+  <section>
+    <h2>Little moments, big love 🤍</h2>
+    <div class="wall">
+      <img src="p18.jpg">
+      <img src="p19.jpg">
+      <img src="p20.jpg">
+      <img src="p21.jpg">
+      <img src="p22.jpg">
+      <img src="p23.jpg">
+    </div>
+  </section>
 
-<footer>
-  Made with love, by yours, <strong>Shetty</strong> 💞
-</footer>
+  <!-- FINAL -->
+  <section>
+    <h2>And now… Forever ♾️</h2>
+    <div class="final">
+      <img src="p25.jpg">
+      <img src="p26.jpg">
+      <img src="p27.jpg">
+      <img src="p28.jpg">
+      <img src="p29.jpg">
+      <img src="p30.jpg">
+    </div>
+  </section>
 
-<script>
-// Countdown
-const target=new Date("March 1, 2026").getTime();
-setInterval(()=>{
-  const d=target-Date.now();
-  days.innerText=Math.floor(d/86400000);
-  hours.innerText=Math.floor(d/3600000)%24;
-  mins.innerText=Math.floor(d/60000)%60;
-  secs.innerText=Math.floor(d/1000)%60;
-},1000);
+  <footer>
+    Made with love, by yours, <strong>Shetty</strong> 💞
+  </footer>
 
-// Typewriter
-const msg=`Some love stories are quiet.
-Some are magical.
-Theirs is both —
-and this is only the beginning. 💖`;
-let i=0;
-(function type(){
-  if(i<msg.length){ text.innerHTML+=msg[i++]; setTimeout(type,40); }
-})();
+  <script>
+    /* 🎵 MUSIC START ON FIRST INTERACTION */
+    const music = document.getElementById("bgMusic");
+    function startMusic() {
+      music.play().catch(() => {});
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("touchstart", startMusic);
+    }
+    document.addEventListener("click", startMusic);
+    document.addEventListener("touchstart", startMusic);
 
-// Game
-const quiz=[
-  ["Who fell in love first?",["Surya","Nidhisha","Both","Destiny"]],
-  ["Who says sorry first?",["Surya","Nidhisha","Depends","Both"]],
-  ["Who plans dates?",["Surya","Nidhisha","Both","Google"]],
-  ["What keeps them together?",["Love","Trust","Friendship","All ❤️"]]
-];
-let qi=0;
-function loadQ(){
-  if(qi>=quiz.length){
-    q.innerText="They win at love. Always 💖";
-    opts.innerHTML="";
-    return;
-  }
-  q.innerText=quiz[qi][0];
-  opts.innerHTML="";
-  quiz[qi][1].forEach(o=>{
-    const b=document.createElement("button");
-    b.innerText=o;
-    b.onclick=()=>{qi++;loadQ();};
-    opts.appendChild(b);
-  });
-}
-loadQ();
+    /* COUNTDOWN */
+    const target = new Date("March 1, 2026").getTime();
+    setInterval(() => {
+      const d = target - Date.now();
+      days.innerText = Math.floor(d / 86400000);
+      hours.innerText = Math.floor(d / 3600000) % 24;
+      mins.innerText = Math.floor(d / 60000) % 60;
+      secs.innerText = Math.floor(d / 1000) % 60;
+    }, 1000);
 
-// Floating hearts
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(14+Math.random()*10)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),9000);
-},1200);
-</script>
+    /* TYPEWRITER */
+    const msg = `Some stories don’t just happen — they transform.
+Two lives, once separate, now move as one.
+Like a Transformer and his Power,
+they amplify each other’s strength and light.
+Where one dreams, the other believes.
+Where one stumbles, the other steadies.
+Love becomes courage, and moments become forever.
+Together, they are more than they ever were alone.
+This engagement is not a promise — it’s a beginning.
+And the most beautiful chapter is just unfolding. 💖`;
+
+    let i = 0;
+    (function type() {
+      if (i < msg.length) {
+        text.innerHTML += msg[i++];
+        setTimeout(type, 40);
+      }
+    })();
+
+    /* GAME */
+    const quiz = [
+      ["Who fell in love first?", ["Surya", "Nidhisha", "Both", "Destiny"]],
+      ["Who says sorry first?", ["Surya", "Nidhisha", "Depends", "Both"]],
+      ["Who plans dates?", ["Surya", "Nidhisha", "Both", "Google"]],
+      ["What keeps them together?", ["Love", "Trust", "Friendship", "All ❤️"]]
+    ];
+
+    let qi = 0;
+    function loadQ() {
+      if (qi >= quiz.length) {
+        q.innerText = "They win at love. Always 💖";
+        opts.innerHTML = "";
+        return;
+      }
+      q.innerText = quiz[qi][0];
+      opts.innerHTML = "";
+      quiz[qi][1].forEach(o => {
+        const b = document.createElement("button");
+        b.innerText = o;
+        b.onclick = () => {
+          qi++;
+          loadQ();
+        };
+        opts.appendChild(b);
+      });
+    }
+    loadQ();
+
+    /* HEARTS */
+    setInterval(() => {
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.innerHTML = "❤️";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.fontSize = 14 + Math.random() * 10 + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 9000);
+    }, 1200);
+  </script>
 
 </body>
 </html>
