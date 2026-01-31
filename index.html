@@ -22,7 +22,6 @@ body {
   overflow-x:hidden;
 }
 
-/* Base */
 section {
   padding:90px 20px;
   max-width:1000px;
@@ -30,12 +29,10 @@ section {
   text-align:center;
 }
 
-/* Typography */
 h1,h2 {
   font-family:'Cormorant Garamond',serif;
 }
 
-/* HERO */
 .hero {
   min-height:100vh;
   display:flex;
@@ -93,6 +90,13 @@ h1,h2 {
   margin-top:35px;
 }
 
+.time-box {
+  background:rgba(255,255,255,.6);
+  padding:15px;
+  border-radius:18px;
+  min-width:70px;
+}
+
 /* TYPEWRITER */
 .typewriter {
   max-width:650px;
@@ -100,7 +104,7 @@ h1,h2 {
   line-height:1.8;
 }
 
-/* REVEAL ANIMATION */
+/* REVEAL */
 .reveal {
   opacity:0;
   transform:translateY(40px);
@@ -163,6 +167,21 @@ h1,h2 {
   box-shadow:0 25px 50px rgba(0,0,0,.25);
 }
 
+/* BLESSING LINE */
+.blessing {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;
+  margin-top:40px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1.2s ease;
+}
+
+.blessing.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
 /* HEARTS */
 .heart {
   position:fixed;
@@ -180,7 +199,7 @@ h1,h2 {
 }
 
 footer {
-  padding:60px 20px;
+  padding:40px 20px 60px;
   font-family:'Cormorant Garamond',serif;
   font-size:1.1rem;
 }
@@ -257,6 +276,11 @@ footer {
     <img src="p29.jpg">
     <img src="p30.jpg">
   </div>
+
+  <!-- 🌸 BLESSING LINE -->
+  <div class="blessing">
+    May Lord Ganesha's grace surround you both, blessing your journey with endless happiness, peace, and prosperity.
+  </div>
 </section>
 
 <footer>
@@ -312,12 +336,11 @@ let i = 0;
 })();
 
 /* SCROLL REVEAL */
-const reveals = document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal, .blessing");
 window.addEventListener("scroll", () => {
-  reveals.forEach(r => {
-    const top = r.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      r.classList.add("show");
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 120) {
+      el.classList.add("show");
     }
   });
 });
